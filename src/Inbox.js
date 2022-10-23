@@ -7,6 +7,8 @@ import {
   Avatar,
   VStack,
   Text,
+  Switch,
+  Stack,
 } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { data } from './constant'

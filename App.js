@@ -6,7 +6,8 @@
  * @flow strict-local
  */
 
-import React, { useEffect, useState } from 'react'
+import 'react-native-gesture-handler'
+import * as React from 'react'
 import {
   NativeModules,
   PermissionsAndroid,
@@ -16,17 +17,20 @@ import {
   Image,
   Animated,
   Dimensions,
+  StatusBar,
 } from 'react-native'
 
-import { NativeBaseProvider, extendTheme } from 'native-base'
+import { NativeBaseProvider, extendTheme, Button } from 'native-base'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import AppIntroSlider from 'react-native-app-intro-slider'
 
 const Stack = createNativeStackNavigator()
+const Drawer = createDrawerNavigator()
 
 import Inbox from './src/Inbox'
-import { slides } from './src/constant'
+import { routes, slides } from './src/constant'
 const newColorTheme = {
   brand: {
     900: '#8287af',
@@ -86,11 +90,16 @@ const { CalendarModule } = NativeModules
 // };
 
 import * as BootSplash from 'react-native-bootsplash'
-
+import { SideMenu } from './src/sidemenu'
+import { Setting } from './src/setting'
+const components = {
+  INBOX: Inbox,
+  SETTINGS: Setting,
+}
 const bootSplashLogo = require('./assets/bootsplash_logo.png')
 
 const App = () => {
-  const [showRealApp, setShowRealApp] = useState(false)
+  const [showRealApp, setShowRealApp] = React.useState(false)
   const [bootSplashIsVisible, setBootSplashIsVisible] = React.useState(true)
   const [bootSplashLogoIsLoaded, setBootSplashLogoIsLoaded] =
     React.useState(false)
@@ -165,13 +174,14 @@ const App = () => {
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     requestCameraPermission()
   }, [])
 
   return (
     <>
       <>
+        <StatusBar hidden={true} />
         {showRealApp ? (
           <NativeBaseProvider theme={theme}>
             <NavigationContainer>
@@ -181,6 +191,23 @@ const App = () => {
               >
                 <Stack.Screen name="Home" component={Inbox} />
               </Stack.Navigator>
+
+              {/* <Drawer.Navigator
+                screenOptions={{ headerShown: false }}
+                initialRouteName="SETTING"
+                drawerContent={({ navigation }) => (
+                  <SideMenu navigation={navigation} />
+                )}
+              >
+                {routes.map(route => {
+                  return (
+                    <Drawer.Screen
+                      name={route.key}
+                      component={components[route.key]}
+                    />
+                  )
+                })}
+              </Drawer.Navigator> */}
             </NavigationContainer>
           </NativeBaseProvider>
         ) : (

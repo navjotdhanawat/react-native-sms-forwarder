@@ -23,11 +23,11 @@ import {
 import { NativeBaseProvider, extendTheme, Button } from 'native-base'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { createDrawerNavigator } from '@react-navigation/drawer'
+// import { createDrawerNavigator } from '@react-navigation/drawer'
 import AppIntroSlider from 'react-native-app-intro-slider'
 
 const Stack = createNativeStackNavigator()
-const Drawer = createDrawerNavigator()
+// const Drawer = createDrawerNavigator()
 
 import Inbox from './src/Inbox'
 import { routes, slides } from './src/constant'

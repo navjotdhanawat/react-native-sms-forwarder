@@ -70,93 +70,84 @@ export const slides = [
 
 export const data = [
   {
-    fullName: 'Aafreen Khan',
-    timeStamp: '12:47 PM',
     content: 'Good Day!',
-    avatarUrl:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
   },
   {
-    fullName: 'Aafreen Khan',
-    timeStamp: '12:47 PM',
     content: 'Good Day!',
-    avatarUrl:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
   },
   {
-    fullName: 'Aafreen Khan',
-    timeStamp: '12:47 PM',
     content: 'Good Day!',
-    avatarUrl:
-      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
   },
   {
-    fullName: 'Sujitha Mathur',
-    timeStamp: '11:11 PM',
-    content: 'Cheer up, there!',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
-  },
-  {
-    fullName: 'Anci Barroco',
-    timeStamp: '6:22 PM',
     content: 'Good Day!',
-    avatarUrl: 'https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg',
   },
   {
-    fullName: 'Aniket Kumar',
-    timeStamp: '8:56 PM',
-    content: 'All the best',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',
+    content: 'Good Day!',
   },
   {
-    fullName: 'Kiara',
-    timeStamp: '12:47 PM',
-    content: 'I will call today.',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    content: 'Good Day!',
   },
   {
-    fullName: 'Kiara',
-    timeStamp: '12:47 PM',
-    content: 'I will call today.',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    content: 'Good Day!',
   },
   {
-    fullName: 'Kiara',
-    timeStamp: '12:47 PM',
-    content: 'I will call today.',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    content: 'Good Day!',
   },
   {
-    fullName: 'Kiara',
-    timeStamp: '12:47 PM',
-    content: 'I will call today.',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    content: 'Good Day!',
   },
   {
-    fullName: 'Kiara',
-    timeStamp: '12:47 PM',
-    content: 'I will call today.',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    content: 'Good Day!',
   },
   {
-    fullName: 'Kiara',
-    timeStamp: '12:47 PM',
-    content: 'I will call today.',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    content: 'Good Day!',
   },
   {
-    fullName: 'Kiara',
-    timeStamp: '12:47 PM',
-    content: 'I will call today.',
-    avatarUrl:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+]
+
+export const data1 = [
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
+  },
+  {
+    content: 'Good Day!',
   },
 ]

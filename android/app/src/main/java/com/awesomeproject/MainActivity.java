@@ -14,7 +14,8 @@ public class MainActivity extends ReactActivity {
     RNBootSplash.init(this); // <- initialize the splash screen
     super.onCreate(savedInstanceState); // or super.onCreate(null) with react-native-screens
   }
-  /**
+  /**` oij
+   * 2`
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.
    */

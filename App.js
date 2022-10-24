@@ -182,7 +182,7 @@ const App = () => {
     <>
       <>
         <StatusBar hidden={true} />
-        {showRealApp ? (
+        {true ? (
           <NativeBaseProvider theme={theme}>
             <NavigationContainer>
               <Stack.Navigator

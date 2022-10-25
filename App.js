@@ -41,6 +41,14 @@ const newColorTheme = {
 const theme = extendTheme({ colors: newColorTheme })
 
 const { CalendarModule } = NativeModules
+
+import * as BootSplash from 'react-native-bootsplash'
+import { SideMenu } from './src/sidemenu'
+import { Setting } from './src/setting'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider } from 'react-redux'
+import { persistor, store } from './src/store'
+
 // enablePromise(true);
 
 // const getDBConnection = async () => {
@@ -89,9 +97,6 @@ const { CalendarModule } = NativeModules
 //   );
 // };
 
-import * as BootSplash from 'react-native-bootsplash'
-import { SideMenu } from './src/sidemenu'
-import { Setting } from './src/setting'
 const components = {
   INBOX: Inbox,
   SETTINGS: Setting,
@@ -182,17 +187,22 @@ const App = () => {
     <>
       <>
         <StatusBar hidden={true} />
-        {true ? (
-          <NativeBaseProvider theme={theme}>
-            <NavigationContainer>
-              <Stack.Navigator
-                screenOptions={{ headerShown: false }}
-                initialRouteName="Home"
-              >
-                <Stack.Screen name="Home" component={Inbox} />
-              </Stack.Navigator>
+        <NativeBaseProvider theme={theme}>
+          <Provider store={store}>
+            <PersistGate
+              loading={<Text>Loading....</Text>}
+              persistor={persistor}
+            >
+              {true ? (
+                <NavigationContainer>
+                  <Stack.Navigator
+                    screenOptions={{ headerShown: false }}
+                    initialRouteName="Home"
+                  >
+                    <Stack.Screen name="Home" component={Inbox} />
+                  </Stack.Navigator>
 
-              {/* <Drawer.Navigator
+                  {/* <Drawer.Navigator
                 screenOptions={{ headerShown: false }}
                 initialRouteName="SETTING"
                 drawerContent={({ navigation }) => (
@@ -208,17 +218,19 @@ const App = () => {
                   )
                 })}
               </Drawer.Navigator> */}
-            </NavigationContainer>
-          </NativeBaseProvider>
-        ) : (
-          <AppIntroSlider
-            data={slides}
-            renderItem={RenderItem}
-            onDone={onDone}
-            showSkipButton={true}
-            onSkip={onDone}
-          />
-        )}
+                </NavigationContainer>
+              ) : (
+                <AppIntroSlider
+                  data={slides}
+                  renderItem={RenderItem}
+                  onDone={onDone}
+                  showSkipButton={true}
+                  onSkip={onDone}
+                />
+              )}
+            </PersistGate>
+          </Provider>
+        </NativeBaseProvider>
         {bootSplashIsVisible && (
           <Animated.View
             style={[

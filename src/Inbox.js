@@ -80,16 +80,18 @@ const Inbox = () => {
         style={{ padding: 10 }}
       >
         <FlatList
-          onRefresh={() => {
-            setPage(0)
-            setInbox([])
-          }}
+          // onRefresh={() => {
+          //   if (page !== 0) {
+          //     setPage(0)
+          //     setInbox([])
+          //   }
+          // }}
           refreshing={isFetching}
           ListEmptyComponent={() => <Text>No message received!!!</Text>}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           data={inbox}
-          // onEndReachedThreshold={0.2}
+          onEndReachedThreshold={0.2}
           onEndReached={onEndReached}
           renderItem={({ item }) => (
             <Box

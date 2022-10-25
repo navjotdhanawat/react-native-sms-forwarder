@@ -1,3 +1,11 @@
+export const actionTypes = {
+  INBOX: {
+    REQUEST: 'INBOX_REQUEST',
+    RESPONSE: 'INBOX_RESPONSE',
+    ERROR: 'INBOX_ERROR',
+  },
+}
+
 export const routes = [
   {
     key: 'INBOX',

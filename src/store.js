@@ -23,11 +23,11 @@ const getStore = persistedReducer => {
 }
 
 const persistConfig = {
-  key: 'main',
+  key: 'root',
   storage: AsyncStorage,
   timeout: null,
   tranforms: [],
-  blacklist: [],
+  blacklist: ['_persist', 'inbox'],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)

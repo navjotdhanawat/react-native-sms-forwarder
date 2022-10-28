@@ -8,46 +8,26 @@ import {
   VStack,
   Text,
 } from 'native-base'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 // import { NativeEventEmitter } from 'react-native'
+import { connect } from 'react-redux'
 
-import DB from '../DB'
-const db = new DB()
+import { actionTypes } from '../constant'
 
 const avatarUrl =
   'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
 
-const Inbox = () => {
-  const [inbox, setInbox] = useState([])
-  const [page, setPage] = useState(0)
-  const [pages, setPages] = useState(Infinity)
-  const [isFetching, setIsFetching] = useState(false)
-  // const myStateRef = React.useRef(page)
-
-  // const _setPage = data => {
-  //   myStateRef.current = data
-  //   setPage(data)
-  // }
-
-  const fetchDate = async ({ page }) => {
-    setIsFetching(true)
-    const data = await db.fetchMessages({ page })
-    console.log('Fetching...', page, data.pages)
-    setPages(data.pages)
-    setInbox([...inbox, ...data.records])
-    setIsFetching(false)
-  }
-
+const Inbox = ({
+  getInbox,
+  onRefresh,
+  inbox: { records, pages, currentPage, isFetching },
+}) => {
   // to get native event once insert is made in SQLite
   // useEffect(() => {
   //   const eventEmitter = new NativeEventEmitter()
-  //   const nativeEvent = eventEmitter.addListener(
-  //     'notificationReceived',
-  //     event => {
-  //       console.log('event.eventProperty')
-  //       fetchDate({ page: myStateRef.current })
-  //     },
-  //   )
+  //   const nativeEvent = eventEmitter.addListener('notificationReceived', () => {
+  //     onRefresh()
+  //   })
 
   //   return () => {
   //     nativeEvent.remove()
@@ -56,14 +36,12 @@ const Inbox = () => {
   // }, [])
 
   useEffect(() => {
-    fetchDate({ page })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page])
+    getInbox({ page: 1 })
+  }, [getInbox])
 
   const onEndReached = () => {
-    if (pages - 1 > page) {
-      console.log('onEndReached:.. ', page)
-      setPage(page + 1)
+    if (currentPage < pages) {
+      getInbox({ page: currentPage + 1 })
     }
   }
 
@@ -80,28 +58,16 @@ const Inbox = () => {
         style={{ padding: 10 }}
       >
         <FlatList
-          // onRefresh={() => {
-          //   if (page !== 0) {
-          //     setPage(0)
-          //     setInbox([])
-          //   }
-          // }}
+          onRefresh={onRefresh}
           refreshing={isFetching}
           ListEmptyComponent={() => <Text>No message received!!!</Text>}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
-          data={inbox}
+          data={records}
           onEndReachedThreshold={0.2}
           onEndReached={onEndReached}
           renderItem={({ item }) => (
-            <Box
-              backgroundColor={'gray.200'}
-              borderRadius={10}
-              // pl={['0', '4']}
-              // pr={['0', '5']}
-              m="1"
-              p="3"
-            >
+            <Box backgroundColor={'gray.200'} borderRadius={10} m="1" p="3">
               <HStack space={[2, 3]} justifyContent="space-between">
                 <Avatar
                   size="48px"
@@ -151,4 +117,28 @@ const Inbox = () => {
   )
 }
 
-export default Inbox
+const mapStateToProps = (state, props) => {
+  // console.log('state.inbox: ', state.inbox)
+  return {
+    inbox: state.inbox,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onRefresh: payload => {
+      dispatch({
+        type: actionTypes.INBOX.REFRESH,
+        payload: { page: 1 },
+      })
+    },
+    getInbox: payload => {
+      dispatch({
+        type: actionTypes.INBOX.REQUEST,
+        payload,
+      })
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inbox)

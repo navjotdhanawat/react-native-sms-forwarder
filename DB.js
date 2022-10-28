@@ -60,10 +60,10 @@ export default class DB extends React.Component {
   /**
    * Select Query
    */
-  async fetchMessages({ params = [], page = 0, limit = 10 }) {
+  async fetchMessages({ params = [], page = 1, limit = 10 }) {
     const countQuery = `SELECT COUNT(_ID) as count FROM INBOX`
-    const query = `SELECT SENDER as sender, CONTENT as content, _ID as id FROM INBOX limit ${limit} offset ${
-      limit * page
+    const query = `SELECT SENDER as sender, CONTENT as content, _ID as id FROM INBOX ORDER BY _ID DESC limit ${limit} offset ${
+      limit * (page - 1)
     }`
     const selectQuery = await this.ExecuteQuery(query, params)
 
@@ -75,7 +75,7 @@ export default class DB extends React.Component {
 
     const selectCountQuery = await this.ExecuteQuery(countQuery, params)
     const total = selectCountQuery.rows.item(0).count
-    return { records, pages: Math.ceil(total / limit) }
+    return { records, currentPage: page, pages: Math.ceil(total / limit) }
   }
 
   // Create Table

@@ -1,6 +1,6 @@
-import { all } from 'redux-saga/effects'
+import { all, fork } from 'redux-saga/effects'
 import { watchInbox } from './inbox'
 
 export function* rootSaga() {
-  yield all([watchInbox])
+  yield all([fork(watchInbox)])
 }

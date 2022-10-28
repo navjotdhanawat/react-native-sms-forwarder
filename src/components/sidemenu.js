@@ -2,7 +2,7 @@ import { HStack, Heading, VStack, Center, Avatar } from 'native-base'
 import { Text, TouchableOpacity } from 'react-native'
 
 import Icon from 'react-native-vector-icons/Feather'
-import { routes } from './constant'
+import { routes } from '../constant'
 
 export const SideMenu = ({ navigation }) => {
   return (
@@ -22,7 +22,10 @@ export const SideMenu = ({ navigation }) => {
 
       {routes.map(route => {
         return (
-          <TouchableOpacity onPress={() => navigation.navigate(route.key)}>
+          <TouchableOpacity
+            key={route.key}
+            onPress={() => navigation.navigate(route.key)}
+          >
             <HStack space={2} justifyContent="center">
               <Center>
                 <Icon name={route.Icon} size={18} />

@@ -2,6 +2,7 @@ export const actionTypes = {
   INBOX: {
     REQUEST: 'INBOX_REQUEST',
     RESPONSE: 'INBOX_RESPONSE',
+    REFRESH: 'INBOX_REFRESH',
     ERROR: 'INBOX_ERROR',
   },
 }

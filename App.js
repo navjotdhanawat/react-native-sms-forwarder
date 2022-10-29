@@ -30,7 +30,10 @@ const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
 
 import Inbox from './src/screens/Inbox'
-import Setting from './src/screens/setting'
+import Setting from './src/screens/Setting'
+import RuleEngine from './src/screens/RuleEngine'
+
+import AddRule from './src/screens/AddRule'
 import { routes, slides } from './src/constant'
 
 const { CalendarModule } = NativeModules
@@ -41,6 +44,7 @@ import { SideMenu } from './src/components/sidemenu'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import { persistor, store } from './src/store'
+import ReviewRule from './src/screens/ReviewRule'
 
 const newColorTheme = {
   brand: {
@@ -99,12 +103,25 @@ const theme = extendTheme({ colors: newColorTheme })
 //   );
 // };
 
-const components = {
-  INBOX: Inbox,
-  SETTINGS: Setting,
+const bootSplashLogo = require('./assets/bootsplash_logo.png')
+
+function InboxStack() {
+  return (
+    <Stack.Navigator initialRouteName="INBOX">
+      <Stack.Group screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="INBOX" component={Inbox} />
+        <Stack.Screen name="ADDRULE" component={AddRule} />
+        <Stack.Screen name="REVIEWRULE" component={ReviewRule} />
+      </Stack.Group>
+    </Stack.Navigator>
+  )
 }
 
-const bootSplashLogo = require('./assets/bootsplash_logo.png')
+const components = {
+  HOME: InboxStack,
+  SETTINGS: Setting,
+  RULEENGINE: RuleEngine,
+}
 
 const App = () => {
   const [showRealApp, setShowRealApp] = React.useState(false)
@@ -189,7 +206,7 @@ const App = () => {
   return (
     <>
       <>
-        <StatusBar hidden={true} />
+        {/* <StatusBar hidden={true} /> */}
         <NativeBaseProvider theme={theme}>
           <Provider store={store}>
             <PersistGate
@@ -198,20 +215,18 @@ const App = () => {
             >
               {true ? (
                 <NavigationContainer>
-                  {/* <Stack.Navigator
-                    screenOptions={{ headerShown: false }}
-                    initialRouteName="Home"
-                  >
-                    <Stack.Screen name="Home" component={Inbox} />
-                  </Stack.Navigator> */}
-
                   <Drawer.Navigator
                     screenOptions={{ headerShown: false }}
-                    initialRouteName="SETTING"
+                    initialRouteName="HOME"
                     drawerContent={({ navigation }) => (
                       <SideMenu navigation={navigation} />
                     )}
                   >
+                    {/* <Drawer.Screen
+                      key={'HOME'}
+                      name={'HOME'}
+                      component={InboxStack}
+                    /> */}
                     {routes.map(route => {
                       return (
                         <Drawer.Screen

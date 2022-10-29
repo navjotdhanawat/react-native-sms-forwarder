@@ -4,8 +4,8 @@ import Header from '../components/header'
 
 const Setting = ({ navigation }) => {
   return (
-    <Box backgroundColor={'blue.500'} paddingTop="5" marginBottom={'160'}>
-      <Header title="Setting" navigation={navigation} />
+    <Box backgroundColor={'gray.200'} paddingTop="5" marginBottom={'160'}>
+      <Header title="Rule Engine" navigation={navigation} />
       <Box
         borderTopLeftRadius={'2xl'}
         borderTopRightRadius={'2xl'}

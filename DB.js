@@ -80,6 +80,10 @@ export default class DB extends React.Component {
 
   // Create Table
   async CreateTable(conn) {
+    // Create Inbox table
+    await this.ExecuteQuery(this.CREATE_TABLE, [], conn)
+
+    // Create Rule table
     await this.ExecuteQuery(this.CREATE_TABLE, [], conn)
   }
 }

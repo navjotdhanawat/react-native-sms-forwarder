@@ -1,4 +1,4 @@
-import { delay, put, select, takeEvery, takeLatest } from 'redux-saga/effects'
+import { put, select, takeLatest } from 'redux-saga/effects'
 import { actionTypes } from '../constant'
 import DB from '../../DB'
 const db = new DB()
@@ -18,5 +18,4 @@ export function* watchInbox() {
     [actionTypes.INBOX.REFRESH, actionTypes.INBOX.REQUEST],
     fetchInbox,
   )
-  // yield takeLatest(, fetchInbox)
 }

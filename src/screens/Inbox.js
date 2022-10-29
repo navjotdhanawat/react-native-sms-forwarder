@@ -7,12 +7,13 @@ import {
   Avatar,
   VStack,
   Text,
+  Center,
 } from 'native-base'
 import React, { useEffect } from 'react'
 // import { NativeEventEmitter } from 'react-native'
 import { connect } from 'react-redux'
-
 import { actionTypes } from '../constant'
+import Header from '../components/header'
 
 const avatarUrl =
   'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
@@ -21,6 +22,7 @@ const Inbox = ({
   getInbox,
   onRefresh,
   inbox: { records, pages, currentPage, isFetching },
+  navigation,
 }) => {
   // to get native event once insert is made in SQLite
   // useEffect(() => {
@@ -46,16 +48,14 @@ const Inbox = ({
   }
 
   return (
-    <Box backgroundColor={'gray.200'} paddingTop="5" marginBottom={'160'}>
-      <Heading p="5" pt="10" pb="3" size="lg">
-        Inbox
-      </Heading>
+    <Box backgroundColor={'blue.500'} paddingTop="5" marginBottom={'120'}>
+      <Header title="Inbox" navigation={navigation} />
       <Box
         borderTopLeftRadius={'2xl'}
         borderTopRightRadius={'2xl'}
         backgroundColor={'white'}
         height="full"
-        style={{ padding: 10 }}
+        style={{ padding: 10, paddingBottom: 0 }}
       >
         <FlatList
           onRefresh={onRefresh}

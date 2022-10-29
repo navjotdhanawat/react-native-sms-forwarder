@@ -1,3 +1,49 @@
+export const numbers = [
+  {
+    phoneNumbers: [
+      {
+        id: '1',
+        label: 'mobile',
+        number: '(940) 546-9492',
+      },
+      {
+        id: '3',
+        label: 'home',
+        number: '(909) 090-9090',
+      },
+    ],
+
+    name: 'Navjot',
+  },
+  {
+    phoneNumbers: [
+      {
+        id: '1',
+        label: 'mobile',
+        number: '(940) 546-9492',
+      },
+      {
+        id: '3',
+        label: 'home',
+        number: '(909) 090-9090',
+      },
+    ],
+
+    name: 'Shweta',
+  },
+  {
+    phoneNumbers: [
+      {
+        id: '1',
+        label: 'mobile',
+        number: '(999) 999-9492',
+      },
+    ],
+
+    name: 'Parth',
+  },
+]
+
 export const actionTypes = {
   INBOX: {
     REQUEST: 'INBOX_REQUEST',
@@ -9,9 +55,14 @@ export const actionTypes = {
 
 export const routes = [
   {
-    key: 'INBOX',
+    key: 'HOME',
     Icon: 'inbox',
     name: 'Inbox',
+  },
+  {
+    key: 'RULEENGINE',
+    Icon: 'filter',
+    name: 'Rule Engine',
   },
   {
     key: 'SETTINGS',

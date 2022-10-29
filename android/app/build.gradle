@@ -255,7 +255,9 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-      implementation "androidx.core:core-splashscreen:1.0.0" // Splashscreen
+    implementation "androidx.core:core-splashscreen:1.0.0" // Splashscreen
+
+    implementation project(':react-native-contacts')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
